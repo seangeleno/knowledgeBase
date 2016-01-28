@@ -34,4 +34,52 @@ router.get('/category/:category', function(req, res, next) {
   })
 });
 
+ router.post('/', function(req, res, next){
+   // Get Form Values
+   var title = req.body.title;
+   var category = req.body.category;
+   var body = req.body.body;
+   // You could technically place req.body.value directly but it's a good idea to separate them.
+
+   // Article Object
+   var newArticle = new Article({
+     title: title,
+     category: category,
+     body: body
+   });
+
+   //Update Article
+   router.put('/', function(req, res, next){
+     var id = req.body.id;
+     var data = {
+       title: req.body.title,
+       category: req.body.category,
+       body: req.body.body
+     };
+   })
+   // Create Article
+   Article.createArticle(newArticle, function(err, article){
+     if(err){
+       console.log(err);
+     }
+     //redirect
+     res.location('/articles');
+     res.redirect('/articles')
+   });
+ });
+
+//Remove Article
+router.delete('/:id', function(req, res, next){
+  var id = req.params.id;
+
+  //removeArticle was created in the model
+  Article.removeArticle(id, function(err, article){
+    if(err){
+      console.log(err);
+    }
+    res.location('/articles');
+    res.redirect('/articles')
+  });
+});
+
 module.exports = router;
