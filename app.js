@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var mongo = require('mongodb');
 var db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost/knowledgebase');
+mongoose.connect('mongodb://localhost/knowledgeBase');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
