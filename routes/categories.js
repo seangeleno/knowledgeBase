@@ -22,7 +22,7 @@ router.get('/:id', function(req, res, next) {
       console.log(err);
     }
     res.json(category);
-  })
+  });
 });
 
 module.exports = router;
