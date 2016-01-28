@@ -16,12 +16,12 @@ var articleShema = mongoose.Schema({
     required: true
   },
   date: {
-    type: date,
+    type: Date,
     default: Date.now
   }
 });
 
-var article = module.exports = mongoose.model('Artile', articleSchema);
+var article = module.exports = mongoose.model('Article', articleSchema);
 
 
 //Get all articles
