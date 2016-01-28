@@ -23,6 +23,22 @@ var articleShema = mongoose.Schema({
 
 var article = module.exports = mongoose.model('Artile', articleSchema);
 
-module.exports.getarticles = function (callback){
-  article.find(callback);
+
+//Get all articles
+module.exports.getArticles = function (callback){
+  Article.find(callback);
 }
+
+// Get article by ID
+module.exports.getArticleById = function(id, callback){
+  Article.findById(id, callback);
+}
+
+//Get Category articles
+//We want article category field to match the category thats passed in
+module.exports.getArticleByCategory = function(category, callback){
+  var query = {category: category };
+  Article.find(query, callback)
+}
+
+//
