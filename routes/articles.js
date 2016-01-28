@@ -24,5 +24,14 @@ router.get('/:id', function(req, res, next) {
     res.json(article);
   })
 });
+//req.params.category and :category must match
+router.get('/category/:category', function(req, res, next) {
+  Article.getArticleByCategory(req.params.category, function(err, articles){
+    if(err){
+      console.log(err);
+    }
+    res.json(articles);
+  })
+});
 
 module.exports = router;
