@@ -14,4 +14,15 @@ router.get('/', function(req, res, next) {
   })
 });
 
+//adding route for individual id
+//req.params.id has to match '/:id' you can put whatever you want as long as they match
+router.get('/:id', function(req, res, next) {
+  Article.getArticleById(req.params.id, function(err, article){
+    if(err){
+      console.log(err);
+    }
+    res.json(article);
+  })
+});
+
 module.exports = router;
